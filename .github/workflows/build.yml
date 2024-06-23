@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  MC_VERSION: 1.20.6
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - name: Build image
+        run: docker build --build-arg mc=$MC_VERSION --tag ghcr.io/c3kay/papermc:$MC_VERSION .
+      - name: Push image
+        run: docker push ghcr.io/c3kay/papermc:MC_VERSION
