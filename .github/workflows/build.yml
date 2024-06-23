@@ -24,4 +24,4 @@ jobs:
       - name: Build image
         run: docker build --build-arg mc=$MC_VERSION --tag ghcr.io/c3kay/papermc:$MC_VERSION .
       - name: Push image
-        run: docker push ghcr.io/c3kay/papermc:MC_VERSION
+        run: docker push ghcr.io/c3kay/papermc:$MC_VERSION
