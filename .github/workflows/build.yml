@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
+  schedule:
+    - cron: '12 3 * * 1'
 
 env:
   MC_VERSION: 1.20.6
@@ -13,15 +14,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Login
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
-      - name: Build image
-        run: docker build --build-arg mc=$MC_VERSION --tag ghcr.io/c3kay/paper-docker:$MC_VERSION .
-      - name: Push image
-        run: docker push ghcr.io/c3kay/paper-docker:$MC_VERSION
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64,linux/arm64
+          push: true
+          build-args: |
+            mc=$MC_VERSION
+          tags: |
+            ghcr.io/${{github.repository}}:latest
+            ghcr.io/${{github.repository}}:$MC_VERSION
