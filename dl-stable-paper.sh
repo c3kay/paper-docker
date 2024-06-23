@@ -1,4 +1,5 @@
 #!/bin/sh
+# https://docs.papermc.io/misc/downloads-api
 set -eux
 LATEST_BUILD=$(curl -s https://api.papermc.io/v2/projects/paper/versions/${MINECRAFT_VERSION}/builds | \
     jq -r '.builds | map(select(.channel == "default") | .build) | .[-1]')
