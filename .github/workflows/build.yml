@@ -7,12 +7,11 @@ on:
   schedule:
     - cron: '12 3 * * *'
 
-env:
-  MC_VERSION: 1.20.6
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      MC_VERSION: 1.20.6
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -30,7 +29,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           build-args: |
-            mc=$MC_VERSION
+            mc=${{env.MC_VERSION}}
           tags: |
             ghcr.io/${{github.repository}}:latest
-            ghcr.io/${{github.repository}}:$MC_VERSION
+            ghcr.io/${{github.repository}}:${{env.MC_VERSION}}
