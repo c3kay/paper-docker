@@ -1,6 +1,6 @@
 # ------- BUILD LAYER --------- #
 FROM alpine AS build
-ARG mc="1.20"
+ARG mc="1.21"
 
 RUN apk add curl jq
 
