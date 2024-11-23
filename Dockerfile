@@ -12,10 +12,10 @@ RUN /tmp/install-paper.sh
 # -------- APP LAYER ---------- #
 FROM amazoncorretto:21
 
-ENV PUID 1000
+ENV PUID=1000
 RUN yum install wget shadow-utils -y && useradd -r -u ${PUID} mc
 
-ENV GOSU_VERSION 1.17
+ENV GOSU_VERSION=1.17
 COPY --chmod=755 install-gosu.sh /tmp/install-gosu.sh
 RUN /tmp/install-gosu.sh
 
