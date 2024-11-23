@@ -1,0 +1,15 @@
+services:
+  minecraft:
+    image: ghcr.io/c3kay/paper-docker
+#    build:
+#      context: .
+#      args:
+#        mc_version: 1.21.1
+    ports:
+      - "25565:25565/tcp"
+      - "25565:25565/udp"
+    volumes:
+      - "./data:/data:rw"
+    environment:
+      MEM_SIZE: 2G
+      PUID: 1001
