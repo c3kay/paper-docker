@@ -6,13 +6,13 @@ This is a simple docker image for a Minecraft PaperMC Server running on Amazon C
 
 ## Installation
 
-Pull the image via:
-
 ```sh
-docker pull ghcr.io/c3kay/paper-docker
+docker pull ghcr.io/c3kay/paper-docker:<mc-version>
 ```
 
-...or see the example `compose.yml` file.
+Available MC versions: `1.12.1`, `1.20.6`
+
+*Also see the example `compose.yml` file.*
 
 ## Configuration & Usage
 
