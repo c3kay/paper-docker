@@ -1,6 +1,8 @@
 # PaperMC Server Docker Image
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/c3kay/paper-docker/build.yml)
+![MC Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fc3kay%2Fpaper-docker%2Fmaster%2F.github%2Fworkflows%2Fbuild.yml&query=%24.jobs.build.env.MC_VERSION&label=minecraft)
+
 
 This is a simple docker image for a Minecraft PaperMC Server running on Amazon Corretto.
 
@@ -9,8 +11,6 @@ This is a simple docker image for a Minecraft PaperMC Server running on Amazon C
 ```sh
 docker pull ghcr.io/c3kay/paper-docker:<mc-version>
 ```
-
-Available MC versions: `1.12.1`, `1.20.6`
 
 *Also see the example `compose.yml` file.*
 
