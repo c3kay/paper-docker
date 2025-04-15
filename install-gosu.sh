@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # https://github.com/tianon/gosu/blob/master/INSTALL.md
-set -eux
+set -e
+
 rpmArch="$(rpm --query --queryformat='%{ARCH}' rpm)";
 case "$rpmArch" in 
   aarch64) dpkgArch='arm64' ;; 
@@ -12,7 +13,9 @@ case "$rpmArch" in
   *) echo >&2 "error: unknown/unsupported architecture '$rpmArch'"; exit 1 ;; 
 esac;
 echo "$rpmArch -> $dpkgArch"
+
 wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch";
 chmod +x /usr/local/bin/gosu;
+
 gosu --version; 
 gosu nobody true
