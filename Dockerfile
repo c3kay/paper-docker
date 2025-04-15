@@ -11,16 +11,16 @@ ENV JAVA_FLAGS="-Dlog4j2.formatMsgNoLookups=true -XX:+UseG1GC -XX:+ParallelRefPr
 ENV PAPERMC_FLAGS="--nojline"
 ENV MEM_SIZE="1G"
 
-VOLUME /opt/minecraft/data
-WORKDIR /opt/minecraft/data
-
 COPY --chmod=755 ./install-gosu.sh ./install-paper.sh ./docker-entrypoint.sh /usr/local/bin/
 
 RUN yum install -y curl wget jq shadow-utils && \
     useradd -r -u ${PUID} mc && \
-    # mkdir -p /opt/minecraft && \
+    mkdir -p /opt/minecraft/data && \
     install-gosu.sh && \
     install-paper.sh
+
+VOLUME /opt/minecraft/data
+WORKDIR /opt/minecraft/data
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD java -jar -Xms${MEM_SIZE} -Xmx${MEM_SIZE} ${JAVA_FLAGS} /opt/minecraft/server.jar ${PAPERMC_FLAGS} nogui

@@ -3,7 +3,6 @@
 ![Build Status](https://img.shields.io/github/actions/workflow/status/c3kay/paper-docker/build.yml)
 ![MC Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fc3kay%2Fpaper-docker%2Fmaster%2F.github%2Fworkflows%2Fbuild.yml&query=%24.jobs.build.env.MC_VERSION&label=minecraft)
 
-
 This is a simple docker image for a Minecraft PaperMC Server running on Amazon Corretto.
 
 ## Installation
@@ -16,7 +15,8 @@ docker pull ghcr.io/c3kay/paper-docker:<mc-version>
 
 ## Configuration & Usage
 
-All data and configs are located in the `/data` folder. You can map a docker volume or local directory to persist this folder.
+All data and configs are located in the `/opt/minecraft/data` folder.
+You can map a docker volume or local directory to persist this folder.
 
 The following environment variables can be set:
 - `PUID`: The UID of the user running the server (default: `1000`).
