@@ -1,9 +1,7 @@
 # PaperMC Server Docker Image
 
-![Build Status](https://img.shields.io/github/actions/workflow/status/c3kay/paper-docker/build.yml)
-![MC Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fc3kay%2Fpaper-docker%2Fmaster%2F.github%2Fworkflows%2Fbuild.yml&query=%24.jobs.build.env.MC_VERSION&label=minecraft)
-
-This is a simple docker image for a Minecraft PaperMC Server running on Amazon Corretto.
+A simple docker image for a Minecraft PaperMC Server running on Amazon Corretto.
+The image is build and updated weekly with the latest stable version of PaperMC.
 
 ## Installation
 
@@ -11,7 +9,8 @@ This is a simple docker image for a Minecraft PaperMC Server running on Amazon C
 docker pull ghcr.io/c3kay/paper-docker:<mc-version>
 ```
 
-*Also see the example `compose.yml` file.*
+Check the [Packages page](https://github.com/c3kay/paper-docker/pkgs/container/paper-docker) for available versions.
+Also see the example `compose.yml` file.
 
 ## Configuration & Usage
 
@@ -19,6 +18,7 @@ All data and configs are located in the `/opt/minecraft/data` folder.
 You can map a docker volume or local directory to persist this folder.
 
 The following environment variables can be set:
+
 - `PUID`: The UID of the user running the server (default: `1000`).
 - `MEM_SIZE`: Allocated memory for the server.
 - `PAPERMC_FLAGS`: Additional flags for PaperMC.
