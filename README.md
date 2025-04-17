@@ -1,7 +1,8 @@
 # PaperMC Server Docker Image
 
 A simple docker image for a Minecraft PaperMC Server running on Amazon Corretto.
-The image is build and updated weekly with the latest stable version of PaperMC.
+
+The image is built and updated weekly with the latest stable version of PaperMC.
 
 ## Installation
 
