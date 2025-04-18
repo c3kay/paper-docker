@@ -1,4 +1,4 @@
-FROM amazoncorretto:21-al2023-headless
+FROM amazoncorretto:24-headless
 
 ARG mc_version
 ENV MC_VERSION=${mc_version}
