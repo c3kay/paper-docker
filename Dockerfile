@@ -1,4 +1,4 @@
-FROM amazoncorretto:21
+FROM amazoncorretto:21-al2023-headless
 
 ARG mc_version
 ENV MC_VERSION=${mc_version}
@@ -13,7 +13,7 @@ ENV MEM_SIZE="1G"
 
 COPY --chmod=755 ./install-gosu.sh ./install-paper.sh ./docker-entrypoint.sh /usr/local/bin/
 
-RUN yum install -y curl wget jq shadow-utils && \
+RUN yum install -y shadow-utils jq && \
     useradd -r -u ${PUID} mc && \
     mkdir -p /opt/minecraft/data && \
     install-gosu.sh && \
