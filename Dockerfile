@@ -13,8 +13,9 @@ ENV MEM_SIZE="1G"
 
 COPY --chmod=755 ./install-gosu.sh ./install-paper.sh ./docker-entrypoint.sh /usr/local/bin/
 
-RUN yum install -y shadow-utils jq && \
-    useradd -r -u ${PUID} mc && \
+RUN yum install -y jq && \
+    echo "mc:x:${PUID}:${PUID}::/opt/minecraft:/sbin/nologin" >> /etc/passwd && \
+    echo "mc:x:${PUID}:" >> /etc/group && \
     mkdir -p /opt/minecraft/data && \
     install-gosu.sh && \
     install-paper.sh
