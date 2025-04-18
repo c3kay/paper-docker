@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # https://docs.papermc.io/misc/downloads-api
 set -e
 
@@ -20,8 +20,14 @@ get_latest_stable_version() {
 
 version="${MC_VERSION:-$(get_latest_stable_version)}"
 build=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${version}/builds" | jq '.builds | .[-1] | .build')
+if [ -z "$build" ] || [ "$build" = "null" ]; then
+  echo "Error: Could not determine build number for version $version" >&2
+  exit 1
+fi
 echo "Latest build for MC ${version}: ${build}"
 
 jar_url="https://api.papermc.io/v2/projects/paper/versions/${version}/builds/${build}/downloads/paper-${version}-${build}.jar"
-echo "Downloading from: ${jar_url}"
-curl -o "/opt/minecraft/server.jar" "$jar_url"
+curl -fLo "/opt/minecraft/server.jar" "$jar_url" || {
+  echo "Error: Failed to download file from $jar_url" >&2
+  exit 1
+}

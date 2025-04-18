@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e
 
 if [ -n "${PUID}" ] && [ ! "${PUID}" = "$(id mc -u)" ]; then

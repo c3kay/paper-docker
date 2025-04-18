@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # https://github.com/tianon/gosu/blob/master/INSTALL.md
 set -e
 
@@ -14,7 +14,7 @@ case "$rpmArch" in
 esac;
 echo "$rpmArch -> $dpkgArch"
 
-wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch";
+curl -fLo /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch";
 chmod +x /usr/local/bin/gosu;
 
 gosu --version; 
