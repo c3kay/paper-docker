@@ -2,8 +2,6 @@
 
 A simple docker image for a Minecraft PaperMC Server running on Amazon Corretto.
 
-The image is built and updated weekly with the latest stable version of PaperMC.
-
 ## Installation
 
 ```sh
@@ -11,7 +9,7 @@ docker pull ghcr.io/c3kay/paper-docker:<mc-version>
 ```
 
 Check the [Packages page](https://github.com/c3kay/paper-docker/pkgs/container/paper-docker) for available versions.
-Also see the example `compose.yml` file.
+If a version is not available, please build it by yourself. Also see the example `compose.yml` file!
 
 ## Configuration & Usage
 
